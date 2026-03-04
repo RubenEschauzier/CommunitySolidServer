@@ -29,18 +29,18 @@ export class MultipleFixedContentTypeMapper extends BaseFileIdentifierMapper {
   public constructor(
     base: string,
     rootFilepath: string,
-    extensionTypes: Record<string, string> = {
-      '.nq': 'application/n-quads',
-      '.rq': 'application/sparql-query',
-      '.txt': 'text/plain'
-    },
-    searchExtensions = ['.nq', '.rq', '.txt'],
+    extensionTypes?: Record<string, string>,
+    searchExtensions?: string[],
     urlSuffix = '',
   ) {
     super(base, rootFilepath);
     this.urlSuffix = urlSuffix;
-    this.searchExtensions = searchExtensions;
-    this.extensionTypes = extensionTypes;
+    this.searchExtensions = searchExtensions ?? ['.nq', '.rq', '.txt'];
+    this.extensionTypes = extensionTypes ?? {
+      '.nq': 'application/n-quads',
+      '.rq': 'application/sparql-query',
+      '.txt': 'text/plain'
+    };
   }
 
   protected async getContentTypeFromPath(filePath: string): Promise<string> {

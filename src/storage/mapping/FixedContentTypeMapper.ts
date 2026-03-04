@@ -25,6 +25,7 @@ export class FixedContentTypeMapper extends BaseFileIdentifierMapper {
     base: string,
     rootFilepath: string,
     contentType: string,
+    stupidIri: string,
     pathSuffix = '',
     urlSuffix = '',
   ) {
