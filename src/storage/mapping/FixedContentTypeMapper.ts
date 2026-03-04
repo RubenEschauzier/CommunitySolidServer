@@ -49,6 +49,9 @@ export class FixedContentTypeMapper extends BaseFileIdentifierMapper {
   public async mapUrlToDocumentPath(identifier: ResourceIdentifier, filePath: string, contentType?: string):
   Promise<ResourceLink> {
     // Handle URL suffix
+    console.log(`map url to document: ${filePath}`);
+    console.log(contentType);
+    console.log(identifier)
     if (this.urlSuffix) {
       if (filePath.endsWith(this.urlSuffix)) {
         filePath = filePath.slice(0, -this.urlSuffix.length);
@@ -59,12 +62,14 @@ export class FixedContentTypeMapper extends BaseFileIdentifierMapper {
         );
       }
     }
+    console.log(`map url to document after: ${filePath + this.pathSuffix}`);
 
     return super.mapUrlToDocumentPath(identifier, filePath + this.pathSuffix, contentType);
   }
 
   protected async getDocumentUrl(relative: string): Promise<string> {
     // Handle path suffix, but ignore metadata files
+    console.log(`get document url: ${relative}`);
     if (this.pathSuffix && !this.isMetadataPath(relative)) {
       if (relative.endsWith(this.pathSuffix)) {
         relative = relative.slice(0, -this.pathSuffix.length);
@@ -73,6 +78,7 @@ export class FixedContentTypeMapper extends BaseFileIdentifierMapper {
         throw new NotFoundHttpError(`File ${relative} is not part of the file storage at ${this.rootFilepath}`);
       }
     }
+    console.log(`get document url: ${relative + this.urlSuffix}`);
 
     return super.getDocumentUrl(relative + this.urlSuffix);
   }
