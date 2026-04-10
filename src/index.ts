@@ -495,6 +495,7 @@ export * from './storage/mapping/BaseFileIdentifierMapper';
 export * from './storage/mapping/ExtensionBasedMapper';
 export * from './storage/mapping/FileIdentifierMapper';
 export * from './storage/mapping/FixedContentTypeMapper';
+export * from './storage/mapping/MultipleFixedContentTypeMapper';
 export * from './storage/mapping/SubdomainExtensionBasedMapper';
 
 // Storage/Patch

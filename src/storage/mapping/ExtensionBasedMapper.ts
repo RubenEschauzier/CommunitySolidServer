@@ -17,10 +17,15 @@ export class ExtensionBasedMapper extends BaseFileIdentifierMapper {
   private readonly customTypes: Record<string, string>;
   private readonly customExtensions: Record<string, string>;
 
+  /**
+   * @param base - The base URL.
+   * @param rootFilepath - The root file path.
+   * @param customTypes - @range {json} Custom types to provide to the mapper.
+   */
   public constructor(
     base: string,
     rootFilepath: string,
-    customTypes?: Record<string, string>,
+    customTypes?: Record<string, string>, 
   ) {
     super(base, rootFilepath);
 
